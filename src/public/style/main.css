@@ -1,0 +1,337 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+input::placeholder {
+  color: #3b3a3a; /* Cambia el color a rojo (#FF0000) */
+}
+.nav {
+  background: #737876;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.img-nav {
+  background-image: url("../img/logo-cuevana-barber.jpg");
+  background-position: center;
+  background-size: cover;
+  margin: 5px 0px;
+}
+.nav nav {
+  position: fixed;
+  bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+}
+.nav a {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  width: 20%;
+  height: 35px;
+  text-align: center;
+  font-size: 15px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 5px;
+  margin: 0px 5px;
+}
+.nav a:hover {
+  background: #313131;
+}
+.div-flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 82vh;
+}
+.div-items-around {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.bg-cuevana {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url("../img/hero-cuevana-barber.png");
+  background-position: center;
+  background-size: cover;
+}
+.btn-cuevana {
+  color: #fff;
+  background: #ff4040;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 10px 30px;
+  font-weight: 600;
+}
+.txt {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+}
+.form-entrar {
+  height: 50%;
+  width: 50%;
+}
+.form-acceder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  height: 100%;
+}
+.form-acceder input {
+  font-weight: 600;
+  background: #999;
+  border: none;
+  font-size: 15px;
+  padding: 10px;
+  box-shadow: 1px 1px 3px 1px;
+  border-radius: 10px;
+}
+.form-acceder button {
+  background: #ff4040;
+  border: none;
+  font-size: 15px;
+  padding: 8px 60px;
+  box-shadow: 1px 1px 3px 1px;
+  border-radius: 10px;
+  color: #000000;
+  font-weight: 600;
+}
+.link {
+  color: rgb(0, 81, 255);
+  margin-bottom: 40px;
+}
+.form-registro {
+  width: 100%;
+  height: 20%;
+}
+.inputs-registro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inputs-registro div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.inputs-registro div input {
+  margin: 20px 5px;
+  height: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 3px 1px;
+}
+.btn-rg {
+  box-shadow: 1px 1px 3px 1px;
+  background: #ff4040;
+  position: absolute;
+  left: 39%;
+  padding: 5px 40px;
+  border: none;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.btnh:hover {
+  cursor: pointer;
+  background: #ad2c2c;
+}
+.form-cita {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 20px;
+}
+.form-checkbox {
+  background: #99999950;
+  padding: 5px;
+}
+.fecha-hora {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fecha-hora input {
+  width: 150px;
+  height: 20px;
+  box-shadow: 1px 1px 3px 1px;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+}
+.btn-form {
+  border: none;
+  font-size: 15px;
+  padding: 8px 60px;
+  box-shadow: 1px 1px 3px 1px;
+  border-radius: 10px;
+  color: #000000;
+  font-weight: 600;
+}
+/*******/
+.content-cards {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 40px;
+}
+.card {
+  color: #ffffff;
+  border-radius: 10px;
+  background: #000000;
+  height: 280px;
+  width: 50%;
+  margin: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.card p {
+  text-align: justify;
+  padding: 0px 15px;
+}
+.btn-form-a {
+  background: #ff4040;
+  border: none;
+  font-size: 15px;
+  padding: 8px 20px;
+  box-shadow: 1px 1px 3px 1px;
+  border-radius: 10px;
+  color: #000000;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+.img {
+  width: 100%;
+  height: 30%;
+  border-radius: 10px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+/******************/
+.img-cabello {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../img/corte-cabello.jpg);
+}
+.img-barba {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../img/corte-ceja.jpeg);
+}
+.img-ceja {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../img/corte-barba.jpg);
+}
+.img-ritual {
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../img/ritual-barba.jpg);
+}
+.table-citas-admin{
+  color: #fff;
+  background-color: rgba(10, 87, 187, 0.473);
+ width: 95%;
+}
+.table-citas-admin th{
+  border: 1px solid #000000;
+ 
+}
+.table-citas-admin td{
+  border: 1px solid #fff;
+  height: 100px;
+  text-align: center;
+}
+.btn{
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-decoration: none;
+  background-color: #ad2c2c;
+  border-radius: 5px;
+  padding: 5px;
+  width: 85%;
+}
+.td-btn{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/*----------MEDIA QUERY----------*/
+@media (min-width: 890px) {
+  .nav {
+    background: #737876;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .nav nav {
+    position: relative;
+    background-color: green;
+    width: 50%;
+    height: 40px;
+  }
+  .nav a {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0%;
+  }
+  /********************00*/
+  .content-cards {
+    height: 84vh;
+    flex-direction: row;
+  }
+  .card {
+  
+    height: 70%;
+    width: 20%;
+   
+  }
+ 
+ 
+ 
+  /********************h*/
+}

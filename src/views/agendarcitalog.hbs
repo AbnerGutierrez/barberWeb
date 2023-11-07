@@ -1,0 +1,37 @@
+{{> navbarlog}}
+<div class="div-flex-center bg-cuevana hh">
+  <div class="div-items-around">
+
+    <form action="/index/{{this.id}}/agenda" method="POST" class="form-cita">
+      <h3>Agendar una cita</h3>
+
+      <div class="form-checkbox">
+        <label for="">Seleccione algun servicio</label>
+        <div>
+          <input type="checkbox" name="servicios" id="corteCabello" value="corte de cabello" />
+          <label for="corteCabello">Corte de cabello</label>
+        </div>
+        <div>
+          <input type="checkbox" name="servicios" id="corteBarba" value="corte de barba" />
+          <label for="corteBarba">Corte de barba</label>
+        </div>
+        <div>
+          <input type="checkbox" name="servicios" id="corteCeja" value="corte de ceja"/>
+          <label for="corteCeja">Corte de ceja</label>
+        </div>
+        <div>
+          <input type="checkbox" name="servicios" id="ritualBarba" value="ritual de barba" />
+          <label for="RitualBarba">Ritual de barba</label>
+        </div>
+
+      </div>
+
+      <div class="fecha-hora">
+        <input type="date" name="dia" id="" />
+        <input type="time" name="hora" id="" />
+      </div>
+
+      <button class="btn-form btnh">Crear cita</button>
+    </form>
+  </div>
+</div>

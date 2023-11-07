@@ -1,0 +1,29 @@
+{{> navbar }}
+<div class="div-flex-center bg-cuevana">
+    {{!-- {{#each db}}
+    <div>
+        <h3>Usuario:{{nombre}}</h3>
+        <p>citas: {{citas}}</p>
+        
+    </div>
+    {{/each}} --}}
+
+<table class="table-citas-admin">
+    <h1>Citas</h1>
+    <tr>
+        <th>Cliente</th>
+        <th>Servicio</th>
+        <th>Acciones</th>
+    </tr>
+    {{#each db}}
+     <tr>
+    <td >{{nombre}}</td>
+    <td>{{citas}}</td>
+    <td class="td-btn"> <a href="" class="btn">Pendiente</a>
+        <a href="" class="btn">Eliminar</a> </td>
+    {{/each}}
+  </tr>
+</table>
+
+
+</div>

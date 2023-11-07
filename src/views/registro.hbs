@@ -1,0 +1,26 @@
+ {{> navbar}}
+<div class=" div-flex-center bg-cuevana hh">
+    <div class="div-items-around">
+
+<form action="/registro" method="POST" class="form-registro">
+ <h3 style="text-align: center;">crea una cuenta</h3>
+    <div class="inputs-registro">
+        <div>
+        <input name="nombre" type="text" placeholder="Nombre o nombres" required="true">
+    <input name="correo" type="email" placeholder="Ingresa tu correo electonico" required="true">
+    <input name="contraseña" type="password" placeholder="ingresar contraseña" required="true">
+    </div>
+
+    <div>
+        <input name="apellido" type="text" placeholder="apellidos" required="true">
+        <input name="telefono" type="text" placeholder="Telefono" required="true">
+        <input name="contraseña2" type="password" placeholder="Confirma la contraseña" required="true">
+    </div>
+    </div>
+
+<button class="btn-rg btnh">Crear</button>
+</form>
+<a href="/acceder" class="link">Ya tienes una cuenta</a>
+
+    </div>
+</div>
