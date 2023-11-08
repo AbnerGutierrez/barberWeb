@@ -1,5 +1,7 @@
 import { Router } from "express";
 import Usuario from "../models/User";
+import Citas from "../models/Citas";
+import Dias from "../models/Dias"
 const router = Router();
 
 /*----------RUTES NORMALES, CUANDO NO HA INGRESADO SESION NI NADA----------*/
@@ -53,8 +55,7 @@ router.post("/acceder", async (req, res) => {
     const id = usuario._id;
     res.redirect(`/index/${id}`);
   } else if (correofrm == "admin@gmail.com" && contraseñafrm == "admin") {
-    const db = await Usuario.find().lean();
-    res.render("adminp", { db });
+    res.redirect("/admin/table");
   } else {
     res.redirect("/acceder");
   }
@@ -65,8 +66,15 @@ router.get("/index/:id", async (req, res) => {
   const { id } = req.params;
   const usuario = await Usuario.findOne({ _id: id });
   const nombre = usuario.nombre;
+  const citas = await Citas.find({ user: id }).populate("user");
+  const citasTransformadas = citas.map((cita) => ({
+    servicios: cita.servicios,
+    fecha: cita.fecha,
+    hora: cita.hora,
+  }));
   //res.redirect(`/index/${id}/cita`);
-  res.render("indexlog", { id, nombre });
+  console.log(citasTransformadas);
+  res.render("indexlog", { id, nombre, citasTransformadas });
   //console.log("TU ID ES :"+nombre);
 });
 //RUTA QUE MANDA AL AGENDAR CITAS AL USUARIO
@@ -81,35 +89,50 @@ router.get("/index/:id/servicios", (req, res) => {
 });
 router.post("/index/:id/agenda", async (req, res) => {
   const { id } = req.params;
-  const dia = req.body.dia;
-  const hora = req.body.hora;
-  const servicios = req.body.servicios;
-  const srv = "Servicio: " + servicios + ", Fecha: " + dia + ", Hora: " + hora;
+  const dia = req.body.dia + "";
+  const hora = req.body.hora + "";
+  const servicios = req.body.servicios + "";
 
   try {
-    const usuariob = await Usuario.findById(id);
-    if (!usuariob) {
+    const usuario = await Usuario.findById(id); // Verificar que el usuario existe
+    if (!usuario) {
       return res.status(404).send("Documento no encontrado");
     }
-    //Aqui se agregan los datos
-    usuariob.citas = srv;
-    //Aqui se guarda segun
-    await usuariob.save();
 
-    console.log(
-      "Esto no se que es: " +
-        usuariob +
-        "Esto se supone que es el string de la cita: " +
-        srv
-    );
+    const citaExistente = await Citas.findOne({ fecha: dia, hora: hora });
+
+    if (citaExistente) {
+      return res
+        .status(400)
+        .send("La cita ya está ocupada en esta fecha y hora.");
+    }
+     const diasn = await Dias.find({});
+      const nowork = diasn.map((now)=>now.nowork);
+      // Comprobar si la fecha seleccionada está en el array "nowork"
+    if (nowork.includes(dia)) {
+      return res.status(400).send("No se puede agendar una cita en esta fecha :( .");
+    }
+    // Guardar los valores en la cita
+    const cita = new Citas({
+      servicios: servicios,
+      fecha: dia,
+      hora: hora,
+      user: usuario,
+    });
+
+    await cita.save();
+
+    // Guardar la cita en el usuario si es necesario (no está claro en tu código)
+    // usuario.citas = cita;
+    // await usuario.save();
+    res.redirect(`/index/${id}`);
+   // res.redirect(`/index/${id}`);
   } catch (error) {
     console.error("Error al agregar datos al documento:", error);
     res.status(500).send("Error interno del servidor");
   }
-
-  res.redirect(`/index/${id}`);
-  console.log(srv);
-}); //obtener los datos de la cita
+});
+//obtener los datos de la cita
 
 router.get("/index/:id/salir", (req, res) => {
   res.redirect("/");
@@ -118,4 +141,29 @@ router.get("/index/:id/salir", (req, res) => {
 
 /*----------ESTO ES DEL ADMIN----------*/
 
+router.get("/admin/table", async (req, res) => {
+  const allcitas = await Citas.find().lean();
+  const citas = await Citas.find().populate("user");
+  const dias = await Dias.find().lean();
+  const citasTransformadas = citas.map((cita) => ({
+    nombre: cita.user.nombre,
+    servicios: cita.servicios,
+    fecha: cita.fecha,
+    hora: cita.hora,
+  }));
+  console.log(citasTransformadas);
+  res.render("adminp", { citasTransformadas,dias });
+});
+
+router.post("/descanso",async(req,res)=>{
+  const des = req.body.descanso;
+  const dias = new Dias({
+    nowork:des,
+  });
+    await dias.save();
+  res.send("dias guardados");
+  console.log(des)
+})
+
+// POR FAVOR HACER CA CARPETA DE CONTROLADORES Y ACOMODAR ESTAS FUNCIONES 
 export default router;

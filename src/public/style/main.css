@@ -2,10 +2,15 @@
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+
+}
+body{
+  background: #3b3a3a;
 }
 input::placeholder {
   color: #3b3a3a; /* Cambia el color a rojo (#FF0000) */
 }
+
 .nav {
   background: #737876;
   display: flex;
@@ -269,9 +274,9 @@ input::placeholder {
     ),
     url(../img/ritual-barba.jpg);
 }
+/* SECCION DEL ADMINISTRADOS*/
 .table-citas-admin{
   color: #fff;
-  background-color: rgba(10, 87, 187, 0.473);
  width: 95%;
 }
 .table-citas-admin th{
@@ -283,6 +288,24 @@ input::placeholder {
   height: 100px;
   text-align: center;
 }
+.nowork{
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+}
+.nowork form{
+display: flex;
+flex-direction:column;
+gap: 5px;
+align-items: center;
+justify-content: center;
+}
+.nowork button{
+  width: 40%;
+  height: 20px;
+}
+
+/* FIN SECCION DEL ADMINISTRADOS*/
 .btn{
   color: rgb(255, 255, 255);
   text-align: center;

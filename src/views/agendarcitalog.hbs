@@ -27,11 +27,24 @@
       </div>
 
       <div class="fecha-hora">
-        <input type="date" name="dia" id="" />
-        <input type="time" name="hora" id="" />
+        <input type="date" name="dia" id="fecha" />
+        <input type="time" min="10:00" max="19:00" name="hora" id="hora" />
       </div>
+      <label for="" id="ok" onclick="mostrar()">MANDAR</label>
 
       <button class="btn-form btnh">Crear cita</button>
     </form>
   </div>
 </div>
+<script>
+  function mostrar(){
+  const dia = document.getElementById('hora');
+  const fecha = document.getElementById('fecha');
+  const valor_fecha = fecha.value;
+  const valor_dia = dia.value;
+  console.log(valor_dia);
+  console.log(valor_fecha);
+  }
+
+</script>
+
