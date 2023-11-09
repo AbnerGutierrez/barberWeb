@@ -146,6 +146,7 @@ router.get("/admin/table", async (req, res) => {
   const citas = await Citas.find().populate("user");
   const dias = await Dias.find().lean();
   const citasTransformadas = citas.map((cita) => ({
+    _id:cita._id,
     nombre: cita.user.nombre,
     servicios: cita.servicios,
     fecha: cita.fecha,
@@ -161,8 +162,20 @@ router.post("/descanso",async(req,res)=>{
     nowork:des,
   });
     await dias.save();
-  res.send("dias guardados");
+  res.redirect("/admin/table");
   console.log(des)
+})
+
+router.get("/eliminarDia/:id",async(req,res)=>{
+  const {id} = req.params;
+   await Dias.findByIdAndDelete({_id:id});
+    res.redirect("/admin/table");
+})
+
+router.get("/eliminarCita/:id",async(req,res)=>{
+  const {id} = req.params;
+   await Citas.findByIdAndDelete({_id:id});
+    res.redirect("/admin/table");
 })
 
 // POR FAVOR HACER CA CARPETA DE CONTROLADORES Y ACOMODAR ESTAS FUNCIONES 
