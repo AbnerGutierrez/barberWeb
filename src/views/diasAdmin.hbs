@@ -1,0 +1,31 @@
+{{> navadmin }}
+<div class=" bg-cuevana" style="padding: 50px 0px;">
+<div class="nowork" style="background-color: rgba(69, 70, 70, 0.404);">
+  <form action="/descanso" method="POST">
+    <h3 style="color: #fff;">Asignar día de descando</h3>
+
+    <input type="date" name="descanso">
+      <button>ok</button>
+  </form>
+
+   <table class="table-citas-admin" style="margin: auto;">
+    <tr>
+      <th>dias descanso</th>
+      <th>Acciones</th>
+    </tr>
+    {{#each dias}}
+      <tr>
+        <td>{{nowork}}</td>
+        <td class="td-btn">
+          <a href="/eliminarDia/{{this._id}}" class="btn">eliminar</a>
+        </td>
+      </tr>
+    {{/each}}
+  </table>
+
+</div>
+
+  
+
+
+</div>

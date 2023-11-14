@@ -1,32 +1,10 @@
-{{> navbar }}
+{{> navadmin }}
 <div class=" bg-cuevana" style="padding: 50px 0px;">
-<div class="nowork" style="background-color: #99999950;">
-  <form action="/descanso" method="POST">
-    <h3 style="color: #fff;">Asignar día de descando</h3>
-
-    <input type="date" name="descanso">
-      <button>ok</button>
-  </form>
-
-  <table class="table-citas-admin" style="margin: auto;">
-    <tr>
-      <th>dias descanso</th>
-      <th>Acciones</th>
-    </tr>
-    {{#each dias}}
-      <tr>
-        <td>{{nowork}}</td>
-        <td class="td-btn">
-          <a href="/eliminarDia/{{this._id}}" class="btn">eliminar</a>
-        </td>
-      </tr>
-    {{/each}}
-  </table>
-
-
+<div class="nowork" style="background-color: rgba(69, 70, 70, 0.404);">
+  
 </div>
 
-  <table class="table-citas-admin" style="background-color: rgba(0, 255, 255, 0.404); margin: auto;">
+  <table class="table-citas-admin" style="background-color: rgba(69, 70, 70, 0.404); margin: auto;">
     <h1 style="text-align: center;">Citas</h1>
     <tr>
       <th>Cliente</th>
@@ -42,7 +20,7 @@
         <td>{{fecha}}</td>
         <td>{{hora}}</td>
         <td class="td-btn">
-          <a href="" class="btn">Pendiente</a>
+          <!--<a href="" class="btn">Pendiente</a>-->
        <a href="/eliminarCita/{{_id}}" class="btn">eliminar</a>
         </td>
       </tr>

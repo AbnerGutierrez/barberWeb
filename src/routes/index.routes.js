@@ -104,13 +104,13 @@ router.post("/index/:id/agenda", async (req, res) => {
     if (citaExistente) {
       return res
         .status(400)
-        .send("La cita ya está ocupada en esta fecha y hora.");
+        .render("citaOcupada"); //AQUI VA LO DE LA SITA OCUPADA
     }
      const diasn = await Dias.find({});
       const nowork = diasn.map((now)=>now.nowork);
       // Comprobar si la fecha seleccionada está en el array "nowork"
     if (nowork.includes(dia)) {
-      return res.status(400).send("No se puede agendar una cita en esta fecha :( .");
+      return res.status(400).render("citaOcupada");
     }
     // Guardar los valores en la cita
     const cita = new Citas({
@@ -162,20 +162,34 @@ router.post("/descanso",async(req,res)=>{
     nowork:des,
   });
     await dias.save();
-  res.redirect("/admin/table");
+  res.redirect("/diasAdministrador");
   console.log(des)
 })
 
 router.get("/eliminarDia/:id",async(req,res)=>{
   const {id} = req.params;
    await Dias.findByIdAndDelete({_id:id});
-    res.redirect("/admin/table");
+    res.redirect("/diasAdministrador");
 })
 
 router.get("/eliminarCita/:id",async(req,res)=>{
   const {id} = req.params;
    await Citas.findByIdAndDelete({_id:id});
     res.redirect("/admin/table");
+})
+
+router.get("/diasAdministrador",async(req,res)=>{
+  const allcitas = await Citas.find().lean();
+  const citas = await Citas.find().populate("user");
+  const dias = await Dias.find().lean();
+  const citasTransformadas = citas.map((cita) => ({
+    _id:cita._id,
+    nombre: cita.user.nombre,
+    servicios: cita.servicios,
+    fecha: cita.fecha,
+    hora: cita.hora,
+  }));
+  res.render("diasAdmin",{ citasTransformadas,dias });
 })
 
 // POR FAVOR HACER CA CARPETA DE CONTROLADORES Y ACOMODAR ESTAS FUNCIONES 
